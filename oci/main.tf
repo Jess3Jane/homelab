@@ -8,7 +8,7 @@ resource "oci_core_vcn" "vcn" {
 resource "oci_core_vlan" "vlan" {
 	compartment_id = var.compartment_ocid
 	vcn_id = oci_core_vcn.vcn.id
-	cidr_blocks = ["172.16.0.0/20"]
+	cidr_block = "172.16.0.0/20"
 	availability_domain = var.availability_domain
 }
 
