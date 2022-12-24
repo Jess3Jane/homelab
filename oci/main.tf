@@ -4,3 +4,27 @@ resource "oci_core_vcn" "vcn" {
 	display_name = "HomeLab VCN"
 	dns_label = "homelab"
 }
+
+resource "oci_core_vlan" "vlan" {
+	compartment_id = var.compartment_ocid
+	vcn_id = oci_core_vcn.vcn.id
+	cidr_blocks = ["172.16.0.0/20"]
+	availability_domain = var.availability_domain
+}
+
+resource "oci_core_instance" "instance_a" {
+	availibility_domain = "jTyh:US-SANJOSE-1-AD-1"
+	compartment_id = var.compartment_id
+	create_vnic_details {
+		hostname_label = "a"
+		private_ip = "172.16.0.2"
+		vlan_id = vlan.id
+	}
+	display_name = "instance-a"
+	fault_domain = "FAULT-DOMAIN-1"
+	shape = var.amd_shape
+	source_details {
+		source_id = var.amd_image
+		source_type = "image"
+	}
+}
