@@ -13,7 +13,7 @@ resource "oci_core_vlan" "vlan" {
 }
 
 resource "oci_core_instance" "instance_a" {
-	availibility_domain = "jTyh:US-SANJOSE-1-AD-1"
+	availability_domain = var.availability_domain
 	compartment_id = var.compartment_ocid
 	create_vnic_details {
 		hostname_label = "a"
