@@ -1,4 +1,4 @@
-variable "compartment_oicd" {}
+variable "compartment_ocid" {}
 variable "region" {}
 variable "tenancy_ocid" {}
 
