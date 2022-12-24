@@ -18,7 +18,7 @@ resource "oci_core_instance" "instance_a" {
 	create_vnic_details {
 		hostname_label = "a"
 		private_ip = "172.16.0.2"
-		vlan_id = vlan.id
+		vlan_id = oci_core_vlan.vlan.id
 	}
 	display_name = "instance-a"
 	fault_domain = "FAULT-DOMAIN-1"
