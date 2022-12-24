@@ -14,7 +14,7 @@ resource "oci_core_vlan" "vlan" {
 
 resource "oci_core_instance" "instance_a" {
 	availibility_domain = "jTyh:US-SANJOSE-1-AD-1"
-	compartment_id = var.compartment_id
+	compartment_id = var.compartment_ocid
 	create_vnic_details {
 		hostname_label = "a"
 		private_ip = "172.16.0.2"
