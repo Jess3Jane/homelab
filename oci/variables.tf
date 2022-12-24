@@ -10,5 +10,5 @@ variable "amd_shape" {
 
 variable "amd_image" {
 	type = string
-	default = "ocid1.tenancy.oc1..aaaaaaaa3wwekfseu6rn3oaqp4u4s3alfmemzqiighv4zsoumctw54jdvttq"
+	default = "ocid1.image.oc1.us-sanjose-1.aaaaaaaaudhtosvzok3k6csi2cnhsee7gfezgnkd7gq742gsoe4xjaxiaoja"
 }
