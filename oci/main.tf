@@ -8,7 +8,7 @@ resource "oci_core_vcn" "vcn" {
 resource "oci_core_subnet" "subnet" {
 	cidr_block = "172.16.0.0/20"
 	compartment_id = var.compartment_ocid
-	display_name "Homelab VCN Subnet"
+	display_name = "Homelab VCN Subnet"
 	vcn_id = oci_core_vcn.vcn.id
 }
 
