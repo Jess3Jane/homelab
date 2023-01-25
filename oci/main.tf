@@ -16,7 +16,7 @@ resource "oci_core_instance" "atropos" {
 	availability_domain = var.availability_domain
 	compartment_id = var.compartment_ocid
 	create_vnic_details {
-		hostname_label = "atropos"
+		#hostname_label = "atropos"
 		private_ip = "172.16.0.2"
 		subnet_id = oci_core_subnet.subnet.id
 	}
