@@ -28,6 +28,6 @@ resource "oci_core_instance" "atropos" {
 		source_type = "image"
 	}
 	metadata = {
-		"ssh_authorized_keys": var.public_key
+		ssh_authorized_keys = var.public_key
 	}
 }
