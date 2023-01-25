@@ -27,4 +27,7 @@ resource "oci_core_instance" "atropos" {
 		source_id = var.amd_image
 		source_type = "image"
 	}
+	metadata = {
+		"ssh_authorized_keys": var.public_key
+	}
 }
