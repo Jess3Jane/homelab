@@ -10,6 +10,7 @@ resource "oci_core_subnet" "subnet" {
   compartment_id = var.compartment_ocid
   display_name = "Homelab VCN Subnet"
   vcn_id = oci_core_vcn.vcn.id
+  dns_label = "main"
 }
 
 resource "oci_core_instance" "instances" {
