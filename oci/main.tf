@@ -32,3 +32,19 @@ resource "oci_core_instance" "instances" {
     ssh_authorized_keys = var.public_key
   }
 }
+
+resource "oci_core_internet_gateway" "gateway" {
+  display_name = "Homelab Gateway"
+  vcn_id = oci_core_subnet.subnet.id
+  compartment_id = var.compartment_ocid
+}
+
+resource "oci_core_route_table" "route_table" {
+  display_name = "Homelab Gateway"
+  vcn_id = oci_core_subnet.subnet.id
+  compartment_id = var.compartment_ocid
+  route_rules {
+    cidr_block = "0.0.0.0/0"
+    network_entity_id = oci_core_internet_gateway.gateway.id
+  }
+}
