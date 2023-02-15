@@ -5,7 +5,6 @@ variable "public_key" {
 
 variable "instances" {
   type = map(object({
-    private_ip = string,
     image = string,
     shape = string,
     availability_domain = string,

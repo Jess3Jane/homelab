@@ -17,8 +17,9 @@ resource "oci_core_instance" "instances" {
   availability_domain = each.value.availability_domain
   compartment_id = var.compartment_ocid
   create_vnic_details {
-    private_ip = each.value.private_ip
     subnet_id = oci_core_subnet.subnet.id
+    assign_public_ip = true
+    hostname_label = each.key
   }
   display_name = each.key
   fault_domain = "FAULT-DOMAIN-1"
