@@ -8,6 +8,6 @@ variable "instances" {
     private_ip = string,
     image = string,
     shape = string,
-    availablity_domain = string,
+    availability_domain = string,
   }))	
 }
