@@ -1,4 +1,4 @@
-"instances" = {
+instances = {
   "atropos" = {
     private_ip = "172.16.0.2"
     availibility_domain = "jTyh:US-SANJOSE-1-AD-1"
