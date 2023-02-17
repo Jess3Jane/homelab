@@ -11,6 +11,7 @@ resource "oci_core_subnet" "subnet" {
   display_name = "Homelab VCN Subnet"
   vcn_id = oci_core_vcn.vcn.id
   dns_label = "main"
+  route_table_id = oci_core_route_table.route_table.id
 }
 
 resource "oci_core_instance" "instances" {
@@ -36,7 +37,7 @@ resource "oci_core_instance" "instances" {
 
 resource "oci_core_internet_gateway" "gateway" {
   display_name = "Homelab Gateway"
-  vcn_id = oci_core_subnet.subnet.id
+  vcn_id = oci_core_vcn.vcn.id
   compartment_id = var.compartment_ocid
 }
 
@@ -46,6 +47,7 @@ resource "oci_core_route_table" "route_table" {
   compartment_id = var.compartment_ocid
   route_rules {
     cidr_block = "0.0.0.0/0"
+
     network_entity_id = oci_core_internet_gateway.gateway.id
   }
 }
