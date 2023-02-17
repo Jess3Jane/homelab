@@ -24,7 +24,7 @@ resource "oci_core_instance" "instances" {
     hostname_label = each.key
   }
   display_name = each.key
-  fault_domain = "FAULT-DOMAIN-1"
+  fault_domain = each.value.fault_domain
   shape = each.value.shape
   source_details {
     source_id = each.value.image

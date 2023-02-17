@@ -7,6 +7,7 @@ variable "instances" {
   type = map(object({
     image = string,
     shape = string,
-    availability_domain = string,
+    availability_domain = optional(string, "jTyh:US-SANJOSE-1-AD-1"),
+    fault_domain = string,
   }))	
 }
