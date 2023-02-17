@@ -16,7 +16,7 @@ resource "oci_core_subnet" "subnet" {
 
 resource "oci_core_instance" "instances" {
   for_each = var.instances
-  availability_domain = each.value.availability_domain
+  availability_domain = var.availability_domain
   compartment_id = var.compartment_ocid
   create_vnic_details {
     subnet_id = oci_core_subnet.subnet.id
