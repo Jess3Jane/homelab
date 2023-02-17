@@ -43,7 +43,7 @@ resource "oci_core_internet_gateway" "gateway" {
 
 resource "oci_core_route_table" "route_table" {
   display_name = "Homelab Gateway"
-  vcn_id = oci_core_subnet.subnet.id
+  vcn_id = oci_core_vcn.vcn.id
   compartment_id = var.compartment_ocid
   route_rules {
     cidr_block = "0.0.0.0/0"
