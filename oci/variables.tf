@@ -8,7 +8,7 @@ variable "instances" {
     image = string,
     shape = string,
     fault_domain = string,
-    shape_config = optional(object({
+    shape_config = list(object({
       memory = number,
       ocpus = number,
     })),

@@ -34,7 +34,7 @@ resource "oci_core_instance" "instances" {
     ssh_authorized_keys = var.public_key
   }
   dynamic "shape_config" {
-    for_each = each.value.shape_config != null ? [each.value.shape_config] : []
+    for_each = each.value.shape_config
     content {
       memory_in_gbs = shape_config.memory
       ocpus = shape_config.ocpus
