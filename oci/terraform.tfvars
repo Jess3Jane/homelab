@@ -16,35 +16,8 @@ instances = {
     shape = "VM.Standard.A1.Flex"
     image = "ocid1.image.oc1.us-sanjose-1.aaaaaaaa55gsqdrzvcsnfhyqs4p3ipllgzhasngdml6t3teiradtskjtcxdq"
     shape_config = [{ 
-      memory = 6,
-      ocpus = 1,
-    }],
-  },
-  "nona" = {
-    fault_domain = "FAULT-DOMAIN-1"
-    shape = "VM.Standard.A1.Flex"
-    image = "ocid1.image.oc1.us-sanjose-1.aaaaaaaa55gsqdrzvcsnfhyqs4p3ipllgzhasngdml6t3teiradtskjtcxdq"
-    shape_config = [{ 
-      memory = 6,
-      ocpus = 1,
-    }],
-  },
-  "decima" = {
-    fault_domain = "FAULT-DOMAIN-2"
-    shape = "VM.Standard.A1.Flex"
-    image = "ocid1.image.oc1.us-sanjose-1.aaaaaaaa55gsqdrzvcsnfhyqs4p3ipllgzhasngdml6t3teiradtskjtcxdq"
-    shape_config = [{ 
-      memory = 6,
-      ocpus = 1,
-    }],
-  },
-  "morta" = {
-    fault_domain = "FAULT-DOMAIN-3"
-    shape = "VM.Standard.A1.Flex"
-    image = "ocid1.image.oc1.us-sanjose-1.aaaaaaaa55gsqdrzvcsnfhyqs4p3ipllgzhasngdml6t3teiradtskjtcxdq"
-    shape_config = [{ 
-      memory = 6,
-      ocpus = 1,
+      memory = 24
+      ocpus = 4,
     }],
   },
 }
