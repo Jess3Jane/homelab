@@ -13,6 +13,10 @@ instances = {
     fault_domain = "FAULT-DOMAIN-3"
     shape = "VM.Standard.A1.Flex"
     image = "ocid1.image.oc1.us-sanjose-1.aaaaaaaa55gsqdrzvcsnfhyqs4p3ipllgzhasngdml6t3teiradtskjtcxdq"
+    shape_config = {
+      memory = 24,
+      ocpus = 4,
+    },
   },
 }
 

@@ -8,6 +8,10 @@ variable "instances" {
     image = string,
     shape = string,
     fault_domain = string,
+    shape_config = optional(object({
+      memory = number,
+      ocpus = number,
+    })),
   }))	
 }
 
