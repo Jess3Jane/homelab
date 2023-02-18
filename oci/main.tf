@@ -58,3 +58,22 @@ resource "oci_core_route_table" "route_table" {
     network_entity_id = oci_core_internet_gateway.gateway.id
   }
 }
+
+resource "gandi_livedns_record" "instance_records" {
+  for_each = var.instances
+  name = each.key
+  ttl = 900
+  type = "A"
+  values = toset([oci_core_instance.instances[each.key].public_ip])
+  zone = "lab.dizzywolf.house"
+}
+
+resource "gandi_livedns_record" "lab_record" {
+  name = "lab"
+  ttl = 900
+  type = "A"
+  values = toset([
+    for k, _ in var.instances : oci_core_instance.instances[k].public_ip
+  ])
+  zone = "dizzywolf.house"
+}
