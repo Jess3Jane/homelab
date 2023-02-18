@@ -59,12 +59,21 @@ resource "oci_core_route_table" "route_table" {
   }
 }
 
-resource "gandi_livedns_record" "instance_records" {
+resource "gandi_livedns_record" "public_instance_records" {
   for_each = var.instances
   name = "${each.key}.lab"
   ttl = 900
   type = "A"
   values = toset([oci_core_instance.instances[each.key].public_ip])
+  zone = "dizzywolf.house"
+}
+
+resource "gandi_livedns_record" "private_instance_records" {
+  for_each = var.instances
+  name = "${each.key}.in.lab"
+  ttl = 900
+  type = "A"
+  values = toset([oci_core_instance.instances[each.key].private_ip])
   zone = "dizzywolf.house"
 }
 
