@@ -61,11 +61,11 @@ resource "oci_core_route_table" "route_table" {
 
 resource "gandi_livedns_record" "instance_records" {
   for_each = var.instances
-  name = each.key
+  name = "${each.key}.labl"
   ttl = 900
   type = "A"
   values = toset([oci_core_instance.instances[each.key].public_ip])
-  zone = "lab.dizzywolf.house"
+  zone = "dizzywolf.house"
 }
 
 resource "gandi_livedns_record" "lab_record" {
