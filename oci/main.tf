@@ -36,8 +36,8 @@ resource "oci_core_instance" "instances" {
   dynamic "shape_config" {
     for_each = each.value.shape_config
     content {
-      memory_in_gbs = shape_config.memory
-      ocpus = shape_config.ocpus
+      memory_in_gbs = shape_config.value.memory
+      ocpus = shape_config.value.ocpus
     }
   }
 }
