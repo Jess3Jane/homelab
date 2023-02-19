@@ -48,6 +48,19 @@ resource "oci_core_internet_gateway" "gateway" {
   compartment_id = var.compartment_ocid
 }
 
+resource "oci_core_security_list" "sl" {
+  compartment_id = var.compartment_ocid
+  vcn_id = oci_core_vcn.vcn.id
+  ingress_security_rules {
+    protocol = "all"
+    source = "172.16.0.0/20"
+  }
+  egress_security_rules {
+    protocol = "all"
+    destination = "172.16.0.0/20"
+  }
+}
+
 resource "oci_core_route_table" "route_table" {
   display_name = "Homelab Gateway"
   vcn_id = oci_core_vcn.vcn.id
