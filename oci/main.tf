@@ -63,7 +63,7 @@ resource "oci_core_security_list" "sl" {
 }
 
 resource "oci_core_network_security_group" "nsg" {
-  compartment_id = var.compartment_id
+  compartment_id = var.compartment_ocid
   vcn_id = oci_core_vcn.vcn.id
 }
 
