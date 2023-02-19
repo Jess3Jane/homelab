@@ -22,7 +22,6 @@ resource "oci_core_instance" "instances" {
     subnet_id = oci_core_subnet.subnet.id
     assign_public_ip = true
     hostname_label = each.key
-    nsg_ids = [oci_core_network_security_group.nsg.id]
   }
   display_name = each.key
   fault_domain = each.value.fault_domain
@@ -60,27 +59,6 @@ resource "oci_core_security_list" "sl" {
     protocol = "all"
     destination = "172.16.0.0/20"
   }
-}
-
-resource "oci_core_network_security_group" "nsg" {
-  compartment_id = var.compartment_ocid
-  vcn_id = oci_core_vcn.vcn.id
-}
-
-resource "oci_core_network_security_group_security_rule" "ingress" {
-  network_security_group_id = oci_core_network_security_group.nsg.id
-  direction = "INGRESS"
-  source = "0.0.0.0/0"
-  destination = "0.0.0.0/0"
-  protocol = "all"
-}
-
-resource "oci_core_network_security_group_security_rule" "egress" {
-  network_security_group_id = oci_core_network_security_group.nsg.id
-  direction = "EGRESS"
-  source = "0.0.0.0/0"
-  destination = "0.0.0.0/0"
-  protocol = "all"
 }
 
 resource "oci_core_route_table" "route_table" {
