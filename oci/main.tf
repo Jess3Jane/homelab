@@ -40,6 +40,7 @@ resource "oci_core_instance" "instances" {
       ocpus = shape_config.value.ocpus
     }
   }
+  nsg_ids = [oci_core_network_security_group.nsg.id]
 }
 
 resource "oci_core_internet_gateway" "gateway" {
@@ -59,6 +60,27 @@ resource "oci_core_security_list" "sl" {
     protocol = "all"
     destination = "172.16.0.0/20"
   }
+}
+
+resource "oci_core_network_security_group" "nsg" {
+  compartment_id = var.compartment_id
+  vcn_id = oci_core_vcn.vcn.id
+}
+
+resource "oci_core_network_security_group_security_rule" "ingress" {
+  network_security_group_id = oci_core_network_security_group.nsg.id
+  direction = "INGRESS"
+  source = "0.0.0.0/0"
+  destination = "0.0.0.0/0"
+  protocol = "all"
+}
+
+resource "oci_core_network_security_group_security_rule" "egress" {
+  network_security_group_id = oci_core_network_security_group.nsg.id
+  direction = "EGRESS"
+  source = "0.0.0.0/0"
+  destination = "0.0.0.0/0"
+  protocol = "all"
 }
 
 resource "oci_core_route_table" "route_table" {
