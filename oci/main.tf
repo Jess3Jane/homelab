@@ -22,6 +22,7 @@ resource "oci_core_instance" "instances" {
     subnet_id = oci_core_subnet.subnet.id
     assign_public_ip = true
     hostname_label = each.key
+    nsg_ids = [oci_core_network_security_group.nsg.id]
   }
   display_name = each.key
   fault_domain = each.value.fault_domain
@@ -40,7 +41,6 @@ resource "oci_core_instance" "instances" {
       ocpus = shape_config.value.ocpus
     }
   }
-  nsg_ids = [oci_core_network_security_group.nsg.id]
 }
 
 resource "oci_core_internet_gateway" "gateway" {
